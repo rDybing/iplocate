@@ -16,9 +16,21 @@ No 3rd party libraries used. To build a static binary enter `go build iplocate.g
 
 Before use, ensure Fail2Ban is installed and configured correctly and running smoothly. Ensure that both relevant log files exist at given location. If in another location, first update this apps config file before running the app.
 
+Written by:
+- github: rDybing
+- Linked In: Roy Dybing
+- MeWe: Roy Dybing
+
 ---
 
-### Fail2Ban
+## Releases
+
+#### v.1.0.0: 1st July 2019
+- First release
+
+---
+
+## Fail2Ban Details
 
 Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. 
 
@@ -26,13 +38,15 @@ More info here: https://www.fail2ban.org/wiki/index.php/Main_Page
 
 ---
 
-### IP Location API Details
+## IP Location API Details
 
 Location data is gathered from https://www.iplocation.net/
 
 API examples and documentation at https://www.ip2location.com/web-service/ip2location
 
-This app use their WS3 package, with requests to the API looking like this: https://api.ip2location.com/v2/?ip=123.123.123.123&key=demo&package=WS3
+This app use their WS3 package, with requests to the API looking like this: 
+
+`https://api.ip2location.com/v2/?ip=123.123.123.123&key=demo&package=WS3`
 
 This app use the free demo key - which limits ip-lookups to 20 per day (24h period). For information on paid subscription, please visit their site.
 
@@ -49,9 +63,9 @@ This app use the free demo key - which limits ip-lookups to 20 per day (24h peri
 ```
 ---
 
-### License: MIT
+## License: MIT
 
-Copyright (c) 2019 Roy Dybing
+**Copyright (c) 2019 Roy Dybing** 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -72,3 +86,4 @@ SOFTWARE.
 
 ---
 
+ʕ◔ϖ◔ʔ
