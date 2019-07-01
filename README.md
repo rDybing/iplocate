@@ -28,8 +28,14 @@ MeWe:      | Roy Dybing
 
 ## Releases
 
-#### v.1.0.0: Soon™
-- First release
+- Date format: yyyy-mm-dd
+- Version format: [major release].[new feature(s)].[bugfix patch-version]
+
+#### v.0.1.0: 2019-07-01
+- First release. 
+- Only gets IPs from the fail2ban.log file, ignores auth.log for now. 
+- No choice in how to display result, will squirt result out in a very haphazard fashion.
+- No leave to run in background triggering on time interval. Will have to manually run the app to update.
 
 
 ---

@@ -1,0 +1,7 @@
+{
+	"LogDir":	"/var/log/",
+	"AuthLog":	"auth.log",
+	"F2bLog":	"fail2ban.log",
+	"History":	"./history.json",
+	"Interval":	5
+}
