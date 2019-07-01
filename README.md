@@ -16,17 +16,21 @@ No 3rd party libraries used. To build a static binary enter `go build iplocate.g
 
 Before use, ensure Fail2Ban is installed and configured correctly and running smoothly. Ensure that both relevant log files exist at given location. If in another location, first update this apps config file before running the app.
 
-Written by:
-- github: rDybing
-- Linked In: Roy Dybing
-- MeWe: Roy Dybing
+**To contact author:**
+
+location   | name/handle
+-----------|---------
+github:    | rDybing
+Linked In: | Roy Dybing
+MeWe:      | Roy Dybing
 
 ---
 
 ## Releases
 
-#### v.1.0.0: 1st July 2019
+#### v.1.0.0: Soon™
 - First release
+
 
 ---
 
@@ -65,7 +69,7 @@ This app use the free demo key - which limits ip-lookups to 20 per day (24h peri
 
 ## License: MIT
 
-**Copyright (c) 2019 Roy Dybing** 
+**Copyright © 2019 Roy Dybing** 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
