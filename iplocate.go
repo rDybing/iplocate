@@ -21,7 +21,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"math/rand"
 	"net/http"
 	"os"
 	"sort"
@@ -61,7 +60,6 @@ type logT struct {
 func main() {
 	fmt.Printf("v%v\n", version)
 
-	var ips []ipDetailsT
 	var logLoc logT
 	api, logLoc, interval := initApp()
 
@@ -69,36 +67,7 @@ func main() {
 		log.Panic("Polling Interval set too low, exiting...")
 	}
 
-	rand.Seed(time.Now().Unix())
-
-	ipMapOld := logLoc.loadHistoryLog()
-	for i := range ipMapOld {
-		ipLoc := ipMapOld[i]
-		ips = append(ips, ipLoc)
-	}
-	ipsHashOld := hashIps(ips)
-
-	// set a timer around here, and then have a while loop triggered by timer
-
-	ipMapF2B := logLoc.loadFail2BanLog()
-	for i := range ipMapF2B {
-		if _, found := ipMapOld[ipMapF2B[i].IP]; !found {
-			ipLoc := api.getIPLocation(ipMapF2B[i].IP)
-			ipLoc.Method = ipMapF2B[i].Method
-			ipLoc.Date = ipMapF2B[i].Date
-			ips = append(ips, ipLoc)
-		}
-	}
-	ipsHashNew := hashIps(ips)
-
-	if ipsHashOld != ipsHashNew {
-		fmt.Println("Saving New History File")
-		logLoc.saveHistoryLog(ips)
-	}
-
-	sort.Slice(ips, func(i, j int) bool {
-		return ips[i].Date.After(ips[j].Date)
-	})
+	ips := logLoc.importLogs(api)
 
 	fmt.Println("------------------------------------------------------------------")
 	for i := range ips {
@@ -125,14 +94,36 @@ func initApp() (apiT, logT, int) {
 	return api, logFile, interval
 }
 
-func hashIps(in []ipDetailsT) string {
-	ips := ""
-	for i := range in {
-		ips += in[i].IP
+func (l logT) importLogs(api apiT) []ipDetailsT {
+	var ips []ipDetailsT
+
+	ipMapOld := l.loadHistoryLog()
+	for i := range ipMapOld {
+		ipLoc := ipMapOld[i]
+		ips = append(ips, ipLoc)
 	}
-	data := []byte(ips)
-	out := fmt.Sprintf("%x", md5.Sum(data))
-	return out
+	ipsHashOld := hashIps(ips)
+
+	ipMapF2B := l.loadFail2BanLog()
+	for i := range ipMapF2B {
+		if _, found := ipMapOld[ipMapF2B[i].IP]; !found {
+			ipLoc := api.getIPLocation(ipMapF2B[i].IP)
+			ipLoc.Method = ipMapF2B[i].Method
+			ipLoc.Date = ipMapF2B[i].Date
+			ips = append(ips, ipLoc)
+		}
+	}
+	ipsHashNew := hashIps(ips)
+
+	if ipsHashOld != ipsHashNew {
+		fmt.Println("Saving New History File")
+		l.saveHistoryLog(ips)
+	}
+
+	sort.Slice(ips, func(i, j int) bool {
+		return ips[i].Date.After(ips[j].Date)
+	})
+	return ips
 }
 
 func (l *logT) loadConfig() (int, error) {
@@ -246,6 +237,16 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 			out[ip] = tempOut
 		}
 	}
+	return out
+}
+
+func hashIps(in []ipDetailsT) string {
+	ips := ""
+	for i := range in {
+		ips += in[i].IP
+	}
+	data := []byte(ips)
+	out := fmt.Sprintf("%x", md5.Sum(data))
 	return out
 }
 
