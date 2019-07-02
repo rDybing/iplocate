@@ -1,8 +1,9 @@
 # static binary executable
 iplocate
 
-# test data
+# test data and config
 testData/
+configTest.json
 
 # history
 history.json

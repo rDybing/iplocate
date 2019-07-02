@@ -24,13 +24,14 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
 	"time"
 )
 
 const apiFile = "./settings/api.json"
 const conFile = "./settings/config.json"
-const version = "0.1.0"
+const version = "0.1.1"
 
 var client = &http.Client{
 	Timeout: time.Second * 15,
@@ -58,7 +59,7 @@ type logT struct {
 }
 
 func main() {
-	fmt.Println(version)
+	fmt.Printf("v%v\n", version)
 
 	var ips []ipDetailsT
 	var logLoc logT
@@ -95,9 +96,17 @@ func main() {
 		logLoc.saveHistoryLog(ips)
 	}
 
+	sort.Slice(ips, func(i, j int) bool {
+		return ips[i].Date.After(ips[j].Date)
+	})
+
+	fmt.Println("------------------------------------------------------------------")
 	for i := range ips {
-		fmt.Printf("%20v || %s\n", ips[i].Date, ips[i].IP)
-		fmt.Printf("  %s - %s - %s\n", ips[i].Country, ips[i].Region, ips[i].City)
+		date := fmt.Sprint(ips[i].Date.String())
+		date = fmt.Sprint(ips[i].Date.Format("2006-01-02 15:04:05"))
+		fmt.Printf("%2d: %-20s - %-20s - %s\n", i, date, ips[i].IP, ips[i].Method)
+		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
+		fmt.Println("------------------------------------------------------------------")
 	}
 }
 
@@ -210,7 +219,7 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if strings.Contains(line, "WARNING [ssh] Ban") {
+		if strings.Contains(line, "WARNING") && strings.Contains(line, "Ban") {
 			lines = append(lines, line)
 		}
 	}
