@@ -6,11 +6,11 @@ This app will scan the auth.log and fail2ban.log located in `/var/log/` (linux/r
 
 Location and interval are set in the `./settings/config.json` file.
 
-App will either list 10 mostr recent attempts and a sorted list of countries of origin - or you can list all attempts. Select by entering 1 or 2 followed by enter. 0 + enter to exit.
+App will either list 10 most recent attempts and a sorted list of countries of origin - or you can list all attempts. Select by entering 1 or 2 followed by enter. 0 followed by enter to exit.
 
 App must be run using SUDO or as root due to the files it need access to demanding it.
 
-Written in Go 1.11.2 (linux/ubuntu) - intended target environment, any debian based Linux distro really. Originally runs on my little Raspberry Pi 3B - but will be equally happy on a Cloud Virtual Machine, like a t2.micro from AWS for instance.
+Written in Go 1.11.2 (linux/ubuntu) - intended target environment, any Debian based Linux distro really - but I suspect most Linux distros will work fine. Originally runs on my little Raspberry Pi 3B - but will be equally happy on a Cloud Virtual Machine, like a t2.micro from AWS for instance.
 
 ## Build
 
