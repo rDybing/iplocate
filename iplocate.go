@@ -295,7 +295,8 @@ func (l logT) listAll(api apiT) {
 		date = fmt.Sprint(ips[i].Date.Format("2006-01-02 15:04:05"))
 		fmt.Printf("%2d: %-20s - %-20s - %s\n", i+1, date, ips[i].IP, ips[i].Method)
 		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
-		if i+1%10 == 0 {
+		x := i + 1
+		if x%10 == 0 {
 			fmt.Println(divider)
 			fmt.Println("Hit Enter to show next 10...")
 			fmt.Scanf("%s\n", &input)

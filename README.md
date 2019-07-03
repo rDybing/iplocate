@@ -35,6 +35,9 @@ MeWe:      | Roy Dybing
 - Version format: [major release].[new feature(s)].[bugfix patch-version]
 - Date format: yyyy-mm-dd
 
+#### v.0.3.0: 2019-07-04
+- Added browse 10 entries at a time when listing all, and made it look pretty.
+
 #### v.0.2.1: 2019-07-03
 - Fixed where it would not parse fail2ban.log if formatting deviated even slightly from mine.
 - Fixed so that the two Go-routines did not max out two cores... *cough*
