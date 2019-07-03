@@ -72,6 +72,7 @@ type stateT struct {
 	oldMode int
 	newMode int
 	refresh bool
+	listing bool
 }
 
 var state stateT
@@ -96,9 +97,11 @@ func main() {
 	go logLoc.refresh(api)
 
 	var quit bool
-
+	state.listing = false
 	for !quit {
-		quit = getTopMenu()
+		if !state.listing {
+			quit = getTopMenu()
+		}
 		if state.newMode != state.oldMode {
 			state.oldMode = state.newMode
 			state.refresh = true
@@ -277,6 +280,7 @@ func (l logT) monitor(api apiT) {
 }
 
 func (l logT) listAll(api apiT) {
+	state.listing = true
 	var input string
 	ips := l.importLogs(api)
 
@@ -291,13 +295,14 @@ func (l logT) listAll(api apiT) {
 		date = fmt.Sprint(ips[i].Date.Format("2006-01-02 15:04:05"))
 		fmt.Printf("%2d: %-20s - %-20s - %s\n", i+1, date, ips[i].IP, ips[i].Method)
 		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
-		if i%10 == 0 {
+		if i+1%10 == 0 {
 			fmt.Println(divider)
 			fmt.Println("Hit Enter to show next 10...")
 			fmt.Scanf("%s\n", &input)
 			fmt.Print("\033[1;1H\033[0J")
 		}
 	}
+	state.listing = false
 }
 
 func (l logT) importLogs(api apiT) []ipDetailsT {
