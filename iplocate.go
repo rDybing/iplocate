@@ -177,6 +177,7 @@ func (a *apiT) loadAPI() error {
 
 func (t *timerT) autoUpdate() {
 	for {
+		time.Sleep(1 * time.Second)
 		if t.Compare() && state.oldMode == modeMonitor {
 			state.refresh = true
 		}
@@ -198,6 +199,7 @@ func (t *timerT) Compare() bool {
 
 func (l logT) refresh(api apiT) {
 	for {
+		time.Sleep(1 * time.Second)
 		if state.refresh {
 			placeTopMenu()
 			switch state.oldMode {
