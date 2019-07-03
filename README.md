@@ -6,13 +6,17 @@ This app will scan the auth.log and fail2ban.log located in `/var/log/` (linux/r
 
 Location and interval are set in the `./settings/config.json` file.
 
-List can be displayed chronologically or (soon™) by countries with the most failed login attempts.
+App will either list 10 mostr recent attempts and a sorted list of countries of origin - or you can list all attempts. Select by entering 1 or 2 followed by enter. 0 + enter to exit.
 
 App must be run using SUDO or as root due to the files it need access to demanding it.
 
 Written in Go 1.11.2 (linux/ubuntu) - intended target environment, any debian based Linux distro really. Originally runs on my little Raspberry Pi 3B - but will be equally happy on a Cloud Virtual Machine, like a t2.micro from AWS for instance.
 
-No 3rd party libraries used. To build a static binary enter `go build iplocate.go` and then run using `sudo ./iplocate`
+## Build
+
+Only imports from standard library in this app. No need to get any 3rd party libraries or frameworks.
+
+First make sure you have Go installed and configured correctly, then enter `go build iplocate.go` whilst in your local directory of this repo. Finally run using `sudo ./iplocate` and follow onscreen instructions.
 
 Before use, ensure Fail2Ban is installed and configured correctly and running smoothly. Ensure that both relevant log files exist at given location. If in another location, first update this apps config file before running the app.
 
@@ -30,6 +34,12 @@ MeWe:      | Roy Dybing
 
 - Version format: [major release].[new feature(s)].[bugfix patch-version]
 - Date format: yyyy-mm-dd
+
+#### v.0.2.0: 2019-07-03
+- Added tally of countries.
+- Added 10 most recent continuos update at set interval.
+- Added List all in chunks of 10.
+- Added app control using keys.
 
 #### v.0.1.1: 2019-07-02
 - Sorts on time descending (most recent first).
