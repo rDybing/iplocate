@@ -29,7 +29,7 @@ import (
 )
 
 const apiFile = "./settings/api.json"
-const conFile = "./settings/configTest.json"
+const conFile = "./settings/config.json"
 const version = "0.1.1"
 const divider = "------------------------------------------------------------------"
 
