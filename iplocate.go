@@ -59,11 +59,9 @@ type logT struct {
 }
 
 func main() {
-	fmt.Printf("iplocate v%v\n", version)
-
-	var logLoc logT
 	api, logLoc, interval := initApp()
 
+	fmt.Printf("iplocate v%v\n", version)
 	if interval < 1 {
 		log.Panic("Polling Interval set too low, exiting...")
 	}

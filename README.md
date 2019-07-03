@@ -16,7 +16,7 @@ No 3rd party libraries used. To build a static binary enter `go build iplocate.g
 
 Before use, ensure Fail2Ban is installed and configured correctly and running smoothly. Ensure that both relevant log files exist at given location. If in another location, first update this apps config file before running the app.
 
-**To contact author:**
+**Contact:**
 
 location   | name/handle
 -----------|---------
@@ -28,8 +28,8 @@ MeWe:      | Roy Dybing
 
 ## Releases
 
-- Date format: yyyy-mm-dd
 - Version format: [major release].[new feature(s)].[bugfix patch-version]
+- Date format: yyyy-mm-dd
 
 #### v.0.1.1: 2019-07-02
 - Sorts on time descending (most recent first).
