@@ -99,9 +99,7 @@ func main() {
 	var quit bool
 	state.listing = false
 	for !quit {
-		if !state.listing {
-			quit = getTopMenu()
-		}
+		quit = getTopMenu()
 		if state.newMode != state.oldMode {
 			state.oldMode = state.newMode
 			state.refresh = true
@@ -134,8 +132,10 @@ func placeTopMenu() {
 }
 
 func getTopMenu() bool {
+	if state.listing {
+		return false
+	}
 	var input string
-
 	fmt.Scanf("%s\n", &input)
 	_, err := strconv.Atoi(input)
 	if err != nil {
@@ -146,6 +146,7 @@ func getTopMenu() bool {
 			state.newMode = modeMonitor
 		case "2":
 			state.newMode = modeList
+			state.listing = true
 		case "0":
 			return true
 		default:
@@ -303,6 +304,10 @@ func (l logT) listAll(api apiT) {
 			fmt.Print("\033[1;1H\033[0J")
 		}
 	}
+	fmt.Println(divider)
+	fmt.Println("Hit Enter to go back...")
+	fmt.Scanf("%s\n", &input)
+	state.newMode = modeMonitor
 	state.listing = false
 }
 
