@@ -414,7 +414,6 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 		date := line[0] + " " + subDate[0]
 		tempIP := strings.Split(lines[i], "Ban ")
 		ip := tempIP[1]
-		fmt.Printf("%d - ip: %s", i, ip)
 		if _, found := out[ip]; !found {
 			tempOut.IP = ip
 			if t, err := time.Parse(layout, date); err != nil {
