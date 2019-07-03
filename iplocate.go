@@ -216,7 +216,7 @@ func (l logT) monitor(api apiT) {
 		countriesSorted = append(countriesSorted, countrySingle)
 	}
 	sort.Slice(countriesSorted, func(i, j int) bool {
-		return countriesSorted[i].hits > countriesSorted[i].hits
+		return countriesSorted[i].hits > countriesSorted[j].hits
 	})
 
 	fmt.Println(divider)
@@ -241,7 +241,7 @@ func (l logT) monitor(api apiT) {
 	fmt.Println(divider)
 	fmt.Printf("Total Bans: %d\n", hits)
 	for i := range countriesSorted {
-		fmt.Printf("    %s\t\t\t\t\t  %d\n", countriesSorted[i].name, countriesSorted[i].hits)
+		fmt.Printf("    %-40s%d\n", countriesSorted[i].name, countriesSorted[i].hits)
 	}
 	fmt.Print("\033[0m")
 }
