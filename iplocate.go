@@ -215,6 +215,9 @@ func (l logT) monitor(api apiT) {
 		countrySingle.hits = countries[c]
 		countriesSorted = append(countriesSorted, countrySingle)
 	}
+	sort.Slice(countriesSorted, func(i, j int) bool {
+		return countriesSorted[i].hits > countriesSorted[i].hits
+	})
 
 	fmt.Println(divider)
 
@@ -236,7 +239,7 @@ func (l logT) monitor(api apiT) {
 		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
 	}
 	fmt.Println(divider)
-	fmt.Printf("Total Bans: %d", hits)
+	fmt.Printf("Total Bans: %d\n", hits)
 	for i := range countriesSorted {
 		fmt.Printf("    %s\t\t\t\t\t  %d\n", countriesSorted[i].name, countriesSorted[i].hits)
 	}
@@ -278,7 +281,6 @@ func (l logT) importLogs(api apiT) []ipDetailsT {
 	ipsHashNew := hashIps(ips)
 
 	if ipsHashOld != ipsHashNew {
-		fmt.Println("Saving New History File")
 		l.saveHistoryLog(ips)
 	}
 
