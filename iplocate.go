@@ -31,7 +31,7 @@ import (
 
 const apiFile = "./settings/api.json"
 const conFile = "./settings/config.json"
-const version = "0.2.0"
+const version = "0.2.1"
 const divider = "------------------------------------------------------------------"
 const (
 	modeMonitor = iota
@@ -397,7 +397,7 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if strings.Contains(line, "WARNING") && strings.Contains(line, "Ban") {
+		if (strings.Contains(line, "WARNING") || strings.Contains(line, "NOTICE")) && strings.Contains(line, "Ban") {
 			lines = append(lines, line)
 		}
 	}
@@ -412,7 +412,9 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 		line := strings.Split(lines[i], " ")
 		subDate := strings.Split(line[1], ",")
 		date := line[0] + " " + subDate[0]
-		ip := line[6]
+		tempIP := strings.Split(lines[i], "Ban ")
+		ip := tempIP[1]
+		fmt.Printf("%d - ip: %s", i, ip)
 		if _, found := out[ip]; !found {
 			tempOut.IP = ip
 			if t, err := time.Parse(layout, date); err != nil {

@@ -35,6 +35,9 @@ MeWe:      | Roy Dybing
 - Version format: [major release].[new feature(s)].[bugfix patch-version]
 - Date format: yyyy-mm-dd
 
+#### v.0.2.1: 2019-07-03
+- Fixed where it would not parse fail2ban.log if formatting deviated even slightly from mine.
+
 #### v.0.2.0: 2019-07-03
 - Added tally of countries.
 - Added 10 most recent continuos update at set interval.

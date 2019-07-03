@@ -79,3 +79,5 @@
 2019-07-01 10:19:01,885 fail2ban.actions[2079]: WARNING [ssh] Unban 193.201.224.232
 2019-07-01 10:44:14,852 fail2ban.actions[2079]: WARNING [ssh] Unban 185.143.223.136
 2019-07-01 11:12:59,077 fail2ban.actions[2079]: WARNING [ssh] Unban 2.112.58.170
+2019-07-03 20:44:19,424 fail2ban.actions        [18791]: NOTICE  [sshd] Ban 156.210.229.102
+2019-07-03 20:48:21,808 fail2ban.actions        [18791]: NOTICE  [sshd] Ban 96.114.71.147
