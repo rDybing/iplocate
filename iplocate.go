@@ -152,6 +152,29 @@ func getTopMenu() bool {
 	return false
 }
 
+func hashIps(in []ipDetailsT) string {
+	ips := ""
+	for i := range in {
+		ips += in[i].IP
+	}
+	data := []byte(ips)
+	out := fmt.Sprintf("%x", md5.Sum(data))
+	return out
+}
+
+func (a *apiT) loadAPI() error {
+	f, err := os.Open(apiFile)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	temp := json.NewDecoder(f)
+	if err := temp.Decode(&a); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (t *timerT) autoUpdate() {
 	for {
 		if t.Compare() && state.oldMode == modeMonitor {
@@ -402,29 +425,6 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 		}
 	}
 	return out
-}
-
-func hashIps(in []ipDetailsT) string {
-	ips := ""
-	for i := range in {
-		ips += in[i].IP
-	}
-	data := []byte(ips)
-	out := fmt.Sprintf("%x", md5.Sum(data))
-	return out
-}
-
-func (a *apiT) loadAPI() error {
-	f, err := os.Open(apiFile)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	temp := json.NewDecoder(f)
-	if err := temp.Decode(&a); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (a apiT) getIPLocation(ip string) ipDetailsT {

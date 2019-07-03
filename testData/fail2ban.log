@@ -1,0 +1,81 @@
+2019-06-30 08:20:15,487 fail2ban.server [3635]: INFO    Changed logging target to /var/log/fail2ban.log for Fail2ban v0.8.13
+2019-06-30 08:20:15,489 fail2ban.jail   [3635]: INFO    Creating new jail 'ssh'
+2019-06-30 08:20:15,584 fail2ban.jail   [3635]: INFO    Jail 'ssh' uses pyinotify
+2019-06-30 08:20:15,680 fail2ban.jail   [3635]: INFO    Initiated 'pyinotify' backend
+2019-06-30 08:20:15,683 fail2ban.filter [3635]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 08:20:15,686 fail2ban.filter [3635]: INFO    Set maxRetry = 6
+2019-06-30 08:20:15,689 fail2ban.filter [3635]: INFO    Set findtime = 600
+2019-06-30 08:20:15,691 fail2ban.actions[3635]: INFO    Set banTime = 600
+2019-06-30 08:20:15,849 fail2ban.jail   [3635]: INFO    Jail 'ssh' started
+2019-06-30 08:34:59,032 fail2ban.server [3635]: INFO    Stopping all jails
+2019-06-30 08:35:00,053 fail2ban.jail   [3635]: INFO    Jail 'ssh' stopped
+2019-06-30 08:35:00,056 fail2ban.server [3635]: INFO    Exiting Fail2ban
+2019-06-30 09:21:22,247 fail2ban.server [9928]: INFO    Changed logging target to /var/log/fail2ban.log for Fail2ban v0.8.13
+2019-06-30 09:21:22,249 fail2ban.jail   [9928]: INFO    Creating new jail 'ssh'
+2019-06-30 09:21:22,339 fail2ban.jail   [9928]: INFO    Jail 'ssh' uses pyinotify
+2019-06-30 09:21:22,426 fail2ban.jail   [9928]: INFO    Initiated 'pyinotify' backend
+2019-06-30 09:21:22,429 fail2ban.filter [9928]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 09:21:22,432 fail2ban.filter [9928]: INFO    Set maxRetry = 6
+2019-06-30 09:21:22,435 fail2ban.filter [9928]: INFO    Set findtime = 600
+2019-06-30 09:21:22,437 fail2ban.actions[9928]: INFO    Set banTime = 600
+2019-06-30 09:21:22,594 fail2ban.jail   [9928]: INFO    Creating new jail 'dropbear'
+2019-06-30 09:21:22,594 fail2ban.jail   [9928]: INFO    Jail 'dropbear' uses pyinotify
+2019-06-30 09:21:22,613 fail2ban.jail   [9928]: INFO    Initiated 'pyinotify' backend
+2019-06-30 09:21:22,616 fail2ban.filter [9928]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 09:21:22,619 fail2ban.filter [9928]: INFO    Set maxRetry = 6
+2019-06-30 09:21:22,622 fail2ban.filter [9928]: INFO    Set findtime = 600
+2019-06-30 09:21:22,623 fail2ban.actions[9928]: INFO    Set banTime = 600
+2019-06-30 09:21:22,666 fail2ban.jail   [9928]: INFO    Creating new jail 'ssh-ddos'
+2019-06-30 09:21:22,666 fail2ban.jail   [9928]: INFO    Jail 'ssh-ddos' uses pyinotify
+2019-06-30 09:21:22,685 fail2ban.jail   [9928]: INFO    Initiated 'pyinotify' backend
+2019-06-30 09:21:22,688 fail2ban.filter [9928]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 09:21:22,690 fail2ban.filter [9928]: INFO    Set maxRetry = 6
+2019-06-30 09:21:22,693 fail2ban.filter [9928]: INFO    Set findtime = 600
+2019-06-30 09:21:22,695 fail2ban.actions[9928]: INFO    Set banTime = 600
+2019-06-30 09:21:22,716 fail2ban.jail   [9928]: INFO    Jail 'ssh' started
+2019-06-30 09:21:22,722 fail2ban.jail   [9928]: INFO    Jail 'dropbear' started
+2019-06-30 09:21:22,726 fail2ban.jail   [9928]: INFO    Jail 'ssh-ddos' started
+2019-06-30 15:54:35,020 fail2ban.actions[9928]: WARNING [ssh] Ban 222.248.233.220
+2019-06-30 16:04:35,788 fail2ban.actions[9928]: WARNING [ssh] Unban 222.248.233.220
+2019-06-30 16:39:39,867 fail2ban.server [9928]: INFO    Stopping all jails
+2019-06-30 16:39:40,492 fail2ban.jail   [9928]: INFO    Jail 'dropbear' stopped
+2019-06-30 16:39:41,493 fail2ban.jail   [9928]: INFO    Jail 'ssh' stopped
+2019-06-30 16:39:42,496 fail2ban.jail   [9928]: INFO    Jail 'ssh-ddos' stopped
+2019-06-30 16:39:42,513 fail2ban.server [9928]: INFO    Exiting Fail2ban
+2019-06-30 16:48:20,819 fail2ban.server [2079]: INFO    Changed logging target to /var/log/fail2ban.log for Fail2ban v0.8.13
+2019-06-30 16:48:20,823 fail2ban.jail   [2079]: INFO    Creating new jail 'ssh'
+2019-06-30 16:48:20,921 fail2ban.jail   [2079]: INFO    Jail 'ssh' uses pyinotify
+2019-06-30 16:48:21,029 fail2ban.jail   [2079]: INFO    Initiated 'pyinotify' backend
+2019-06-30 16:48:21,037 fail2ban.filter [2079]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 16:48:21,040 fail2ban.filter [2079]: INFO    Set maxRetry = 3
+2019-06-30 16:48:21,043 fail2ban.filter [2079]: INFO    Set findtime = 600
+2019-06-30 16:48:21,045 fail2ban.actions[2079]: INFO    Set banTime = 6000
+2019-06-30 16:48:21,206 fail2ban.jail   [2079]: INFO    Creating new jail 'dropbear'
+2019-06-30 16:48:21,207 fail2ban.jail   [2079]: INFO    Jail 'dropbear' uses pyinotify
+2019-06-30 16:48:21,226 fail2ban.jail   [2079]: INFO    Initiated 'pyinotify' backend
+2019-06-30 16:48:21,229 fail2ban.filter [2079]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 16:48:21,232 fail2ban.filter [2079]: INFO    Set maxRetry = 3
+2019-06-30 16:48:21,235 fail2ban.filter [2079]: INFO    Set findtime = 600
+2019-06-30 16:48:21,237 fail2ban.actions[2079]: INFO    Set banTime = 6000
+2019-06-30 16:48:21,281 fail2ban.jail   [2079]: INFO    Creating new jail 'ssh-ddos'
+2019-06-30 16:48:21,281 fail2ban.jail   [2079]: INFO    Jail 'ssh-ddos' uses pyinotify
+2019-06-30 16:48:21,300 fail2ban.jail   [2079]: INFO    Initiated 'pyinotify' backend
+2019-06-30 16:48:21,304 fail2ban.filter [2079]: INFO    Added logfile = /var/log/auth.log
+2019-06-30 16:48:21,306 fail2ban.filter [2079]: INFO    Set maxRetry = 3
+2019-06-30 16:48:21,310 fail2ban.filter [2079]: INFO    Set findtime = 600
+2019-06-30 16:48:21,311 fail2ban.actions[2079]: INFO    Set banTime = 6000
+2019-06-30 16:48:21,335 fail2ban.jail   [2079]: INFO    Jail 'ssh' started
+2019-06-30 16:48:21,340 fail2ban.jail   [2079]: INFO    Jail 'dropbear' started
+2019-06-30 16:48:21,343 fail2ban.jail   [2079]: INFO    Jail 'ssh-ddos' started
+2019-07-01 01:12:08,421 fail2ban.actions[2079]: WARNING [ssh] Ban 112.123.58.69
+2019-07-01 02:52:09,189 fail2ban.actions[2079]: WARNING [ssh] Unban 112.123.58.69
+2019-07-01 07:11:52,321 fail2ban.actions[2079]: WARNING [ssh] Ban 114.217.19.128
+2019-07-01 07:43:23,768 fail2ban.actions[2079]: WARNING [ssh] Ban 42.61.24.202
+2019-07-01 08:39:01,070 fail2ban.actions[2079]: WARNING [ssh] Ban 193.201.224.232
+2019-07-01 08:51:53,071 fail2ban.actions[2079]: WARNING [ssh] Unban 114.217.19.128
+2019-07-01 09:04:14,029 fail2ban.actions[2079]: WARNING [ssh] Ban 185.143.223.136
+2019-07-01 09:23:24,534 fail2ban.actions[2079]: WARNING [ssh] Unban 42.61.24.202
+2019-07-01 09:32:58,280 fail2ban.actions[2079]: WARNING [ssh] Ban 2.112.58.170
+2019-07-01 10:19:01,885 fail2ban.actions[2079]: WARNING [ssh] Unban 193.201.224.232
+2019-07-01 10:44:14,852 fail2ban.actions[2079]: WARNING [ssh] Unban 185.143.223.136
+2019-07-01 11:12:59,077 fail2ban.actions[2079]: WARNING [ssh] Unban 2.112.58.170
