@@ -277,15 +277,26 @@ func (l logT) monitor(api apiT) {
 }
 
 func (l logT) listAll(api apiT) {
+	var input string
 	ips := l.importLogs(api)
 
 	fmt.Println(divider)
 	for i := range ips {
+		if i%2 == 0 {
+			fmt.Print("\033[37m")
+		} else {
+			fmt.Print("\033[97m")
+		}
 		date := fmt.Sprint(ips[i].Date.String())
 		date = fmt.Sprint(ips[i].Date.Format("2006-01-02 15:04:05"))
 		fmt.Printf("%2d: %-20s - %-20s - %s\n", i+1, date, ips[i].IP, ips[i].Method)
 		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
-		fmt.Println(divider)
+		if i%10 == 0 {
+			fmt.Println(divider)
+			fmt.Println("Hit Enter to show next 10...")
+			fmt.Scanf("%s\n", &input)
+			fmt.Print("\033[1;1H\033[0J")
+		}
 	}
 }
 
