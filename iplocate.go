@@ -241,7 +241,7 @@ func (l logT) monitor(api apiT) {
 	fmt.Println(divider)
 	fmt.Printf("Total Bans: %d\n", hits)
 	for i := range countriesSorted {
-		fmt.Printf("    %-40s%d\n", countriesSorted[i].name, countriesSorted[i].hits)
+		fmt.Printf("    %-45s%d\n", countriesSorted[i].name, countriesSorted[i].hits)
 	}
 	fmt.Print("\033[0m")
 }
