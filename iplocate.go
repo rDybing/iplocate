@@ -308,6 +308,7 @@ func (l logT) listAll(api apiT) {
 	fmt.Scanf("%s\n", &input)
 	state.newMode = modeMonitor
 	state.listing = false
+	state.refresh = true
 }
 
 func (l logT) importLogs(api apiT) []ipDetailsT {
