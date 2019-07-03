@@ -181,7 +181,7 @@ func (a *apiT) loadAPI() error {
 
 func (t *timerT) autoUpdate() {
 	for {
-		time.Sleep(1 * time.Second)
+		time.Sleep(100 * time.Millisecond)
 		if t.Compare() && state.oldMode == modeMonitor {
 			state.refresh = true
 		}
@@ -203,7 +203,7 @@ func (t *timerT) Compare() bool {
 
 func (l logT) refresh(api apiT) {
 	for {
-		time.Sleep(1 * time.Second)
+		time.Sleep(100 * time.Millisecond)
 		if state.refresh {
 			placeTopMenu()
 			switch state.oldMode {
@@ -284,8 +284,7 @@ func (l logT) listAll(api apiT) {
 	state.listing = true
 	var input string
 	ips := l.importLogs(api)
-
-	fmt.Println(divider)
+	fmt.Print("\033[1;1H\033[0J")
 	for i := range ips {
 		if i%2 == 0 {
 			fmt.Print("\033[37m")
