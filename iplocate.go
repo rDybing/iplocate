@@ -29,8 +29,9 @@ import (
 )
 
 const apiFile = "./settings/api.json"
-const conFile = "./settings/config.json"
+const conFile = "./settings/configTest.json"
 const version = "0.1.1"
+const divider = "------------------------------------------------------------------"
 
 var client = &http.Client{
 	Timeout: time.Second * 15,
@@ -58,7 +59,7 @@ type logT struct {
 }
 
 func main() {
-	fmt.Printf("v%v\n", version)
+	fmt.Printf("iplocate v%v\n", version)
 
 	var logLoc logT
 	api, logLoc, interval := initApp()
@@ -69,13 +70,13 @@ func main() {
 
 	ips := logLoc.importLogs(api)
 
-	fmt.Println("------------------------------------------------------------------")
+	fmt.Println(divider)
 	for i := range ips {
 		date := fmt.Sprint(ips[i].Date.String())
 		date = fmt.Sprint(ips[i].Date.Format("2006-01-02 15:04:05"))
 		fmt.Printf("%2d: %-20s - %-20s - %s\n", i, date, ips[i].IP, ips[i].Method)
 		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
-		fmt.Println("------------------------------------------------------------------")
+		fmt.Println(divider)
 	}
 }
 
