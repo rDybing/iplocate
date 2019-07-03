@@ -264,8 +264,13 @@ func (l logT) monitor(api apiT) {
 		fmt.Printf("    %-20s - %-20s - %-20s\n", ips[i].Country, ips[i].Region, ips[i].City)
 	}
 	fmt.Println(divider)
-	fmt.Printf("Total Bans: %d\n", hits)
-	for i := range countriesSorted {
+	fmt.Printf("Top 5 Banned Countries     Total Bans:\t\t  %d\n", hits)
+	count := len(countriesSorted)
+	top := 5
+	if count < top {
+		top = count
+	}
+	for i := 0; i < top; i++ {
 		fmt.Printf("    %-46s%d\n", countriesSorted[i].name, countriesSorted[i].hits)
 	}
 	fmt.Print("\033[0m")
