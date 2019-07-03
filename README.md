@@ -37,6 +37,7 @@ MeWe:      | Roy Dybing
 
 #### v.0.2.1: 2019-07-03
 - Fixed where it would not parse fail2ban.log if formatting deviated even slightly from mine.
+- Fixed so that the two Go-routines did not max out two cores... *cough*
 
 #### v.0.2.0: 2019-07-03
 - Added tally of countries.
