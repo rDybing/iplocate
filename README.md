@@ -38,8 +38,8 @@ MeWe:      | Roy Dybing
 #### v.0.2.0: 2019-07-03
 - Added tally of countries.
 - Added 10 most recent continuos update at set interval.
-- Added List all in chunks of 10.
-- Added app control using keys.
+- Added List all as a separate option.
+- Added app control using numbers + enter.
 
 #### v.0.1.1: 2019-07-02
 - Sorts on time descending (most recent first).
