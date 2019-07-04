@@ -47,7 +47,7 @@ MeWe:      | Roy Dybing
 
 #### v.0.2.0: 2019-07-03
 - Added tally of countries.
-- Added 10 most recent continuos update at set interval.
+- Added 10 most recent continuous update at set interval.
 - Added List all as a separate option.
 - Added app control using numbers + enter.
 

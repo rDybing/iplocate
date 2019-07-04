@@ -366,7 +366,7 @@ func (l logT) loadHistoryLog() map[string]ipDetailsT {
 	if _, err := os.Stat(l.hist); err == nil {
 		f, err := os.Open(l.hist)
 		if err != nil {
-			log.Printf("Could not open History File...\n%v\n", err)
+			log.Printf("Could not open History File, skipping...\n%v\n", err)
 			return out
 		}
 		defer f.Close()
