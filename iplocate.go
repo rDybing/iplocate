@@ -31,7 +31,7 @@ import (
 
 const apiFile = "./settings/api.json"
 const conFile = "./settings/config.json"
-const version = "0.3.0"
+const version = "0.3.1"
 const divider = "------------------------------------------------------------------"
 const (
 	modeMonitor = iota
@@ -166,22 +166,9 @@ func hashIps(in []ipDetailsT) string {
 	return out
 }
 
-func (a *apiT) loadAPI() error {
-	f, err := os.Open(apiFile)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	temp := json.NewDecoder(f)
-	if err := temp.Decode(&a); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (t *timerT) autoUpdate() {
 	for {
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(10 * time.Second)
 		if t.Compare() && state.oldMode == modeMonitor {
 			state.refresh = true
 		}
@@ -203,7 +190,7 @@ func (t *timerT) Compare() bool {
 
 func (l logT) refresh(api apiT) {
 	for {
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 		if state.refresh {
 			placeTopMenu()
 			switch state.oldMode {
@@ -211,13 +198,17 @@ func (l logT) refresh(api apiT) {
 				l.monitor(api)
 			case modeList:
 				l.listAll(api)
+				state.oldMode = modeMonitor
+				state.newMode = modeMonitor
+				state.refresh = true
+				state.listing = false
 			}
-			state.refresh = false
 		}
 	}
 }
 
 func (l logT) monitor(api apiT) {
+	state.refresh = false
 	ips := l.importLogs(api)
 	var countries map[string]int
 	countries = make(map[string]int)
@@ -282,6 +273,7 @@ func (l logT) monitor(api apiT) {
 
 func (l logT) listAll(api apiT) {
 	state.listing = true
+	state.refresh = false
 	var input string
 	ips := l.importLogs(api)
 	fmt.Print("\033[1;1H\033[0J")
@@ -306,9 +298,6 @@ func (l logT) listAll(api apiT) {
 	fmt.Println(divider)
 	fmt.Println("Hit Enter to go back...")
 	fmt.Scanf("%s\n", &input)
-	state.newMode = modeMonitor
-	state.listing = false
-	state.refresh = true
 }
 
 func (l logT) importLogs(api apiT) []ipDetailsT {
@@ -455,6 +444,19 @@ func (l logT) loadFail2BanLog() map[string]ipDetailsT {
 		}
 	}
 	return out
+}
+
+func (a *apiT) loadAPI() error {
+	f, err := os.Open(apiFile)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	temp := json.NewDecoder(f)
+	if err := temp.Decode(&a); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (a apiT) getIPLocation(ip string) ipDetailsT {
