@@ -92,7 +92,7 @@ func main() {
 	state.oldMode = modeMonitor
 	state.newMode = modeMonitor
 
-	timer.Set(interval)
+	timer.set(interval)
 	go timer.autoUpdate()
 	go logLoc.refresh(api)
 
@@ -169,18 +169,18 @@ func hashIps(in []ipDetailsT) string {
 func (t *timerT) autoUpdate() {
 	for {
 		time.Sleep(10 * time.Second)
-		if t.Compare() && state.oldMode == modeMonitor {
+		if t.compare() && state.oldMode == modeMonitor {
 			state.refresh = true
 		}
 	}
 }
 
-func (t *timerT) Set(freq int) {
+func (t *timerT) set(freq int) {
 	t.old = time.Now()
 	t.freq = freq
 }
 
-func (t *timerT) Compare() bool {
+func (t *timerT) compare() bool {
 	if time.Since(t.old) > (time.Duration(t.freq) * time.Minute) {
 		t.old = time.Now()
 		return true
