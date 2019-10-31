@@ -25,6 +25,7 @@ Before use, ensure Fail2Ban is installed and configured correctly and running sm
 location   | name/handle
 -----------|---------
 github:    | rDybing
+twitter:   | @DybingRoy
 Linked In: | Roy Dybing
 MeWe:      | Roy Dybing
 
