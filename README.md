@@ -1,5 +1,7 @@
 # iplocate.go
 
+![alt text](https://i.imgur.com/WeVz6L8.png "iplocate with 10 latest catches and top 5 countries")
+
 A small tool to gather and list location of attempted intruders caught by Fail2Ban auth protection.
 
 This app will scan the auth.log and fail2ban.log located in `/var/log/` (linux/raspbian) at a given interval. 
